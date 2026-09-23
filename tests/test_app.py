@@ -10,7 +10,7 @@ class AppRoutesTest(unittest.TestCase):
     def test_home_endpoint(self):
         response = self.client.get("/")
 
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(
             response.get_json(),
             {"message": "Hello from DevOps Docker Lab!"},
