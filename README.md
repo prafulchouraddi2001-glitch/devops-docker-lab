@@ -1,37 +1,81 @@
 # DevOps Docker Lab
 
-A hands-on DevOps learning project that packages a small Python web application with Docker.
+A production-oriented Docker and CI foundation project built to learn and demonstrate containerization, automated testing, Git workflows, and GitHub Actions CI.
 
-## Goals
+## Project Objective
 
-- Build a simple web application
-- Package it in a Docker image
-- Run it consistently with Docker Compose
-- Practice Git, troubleshooting, and deployment-ready configuration
+The goal of this project is to build a small Python web application and progressively introduce core DevOps practices around it.
 
-## Run with Docker Compose
+This project focuses on:
 
-1. Start Docker Desktop and wait for the engine to run.
-2. From the project root, run:
+- Application containerization
+- Docker Compose
+- Automated unit testing
+- Container health checks
+- Git and GitHub workflows
+- Continuous Integration with GitHub Actions
+- CI failure diagnosis and recovery
 
-   ```powershell
-   docker compose up --build
-   ```
+---
 
-3. Open `http://127.0.0.1:5000/` in a browser.
+## Architecture
 
-To stop and remove the Compose-managed container and network:
-
-```powershell
-docker compose down
+```text
+Developer
+    |
+    | Git
+    v
+GitHub Repository
+    |
+    | Push / Pull Request
+    v
+GitHub Actions
+    |
+    +----------------------+
+    |                      |
+    v                      v
+Install dependencies    Run unit tests
+                           |
+                           | Tests pass
+                           v
+                     Build Docker image
+                           |
+                           v
+                         CI PASS
 ```
+---
 
-## Health Check
+## Technology Stack
 
-Open `http://127.0.0.1:5000/health`.
+| Technology | Purpose |
+|---|---|
+| Python | Application runtime |
+| Flask | Web application framework |
+| unittest | Automated unit testing |
+| Docker | Application containerization |
+| Docker Compose | Local container workflow |
+| Git | Version control |
+| GitHub | Remote repository |
+| GitHub Actions | Continuous Integration |
 
-Expected response:
+---
 
-```json
-{"status":"ok"}
-```
+## Project Structure
+
+```text
+devops-docker-lab/
+│
+├── app/
+│   └── app.py
+│
+├── tests/
+│   └── test_app.py
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yaml
+│
+├── Dockerfile
+├── compose.yaml
+├── requirements.txt
+└── README.md
